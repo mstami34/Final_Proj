@@ -216,7 +216,16 @@ class Game:
             print("You won! CPU is defeated.")
 
 
+import argparse
+
 def parse_arguments():
+    """
+    Parse command-line arguments for the game.
+
+    Returns:
+        argparse.Namespace: A namespace object containing the parsed arguments.
+            - file (str): The path to the character JSON file. Defaults to "Characters.json".
+    """
     parser = argparse.ArgumentParser(description="A text-based fighting game.")
     parser.add_argument(
         "-f", "--file", type=str, default="Characters.json", help="Path to the character JSON file."
@@ -224,7 +233,19 @@ def parse_arguments():
     return parser.parse_args()
 
 if __name__ == "__main__":
+    """
+    Entry point for the text-based fighting game.
+
+    This block initializes the game using the file specified in the command-line arguments
+    (or the default file if none is provided) and starts the game loop.
+
+    Workflow:
+    1. Parse command-line arguments to retrieve the character file path.
+    2. Initialize the Game class with the specified character file.
+    3. Start the game by calling the `play` method of the Game class.
+    """
     args = parse_arguments()
     game = Game(args.file)
     game.play()
+
     
